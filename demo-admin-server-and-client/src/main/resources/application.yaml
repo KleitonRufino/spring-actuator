@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: demo-admin-server-and-client
+
+# Security config
+spring.security.user:
+  name: admin
+  password: admin
+
+# Actuator config
+management:
+  endpoint:
+    shutdown.enabled: true
+    health.show-details: always
+  endpoints.web.exposure.include: '*'
+
+
+# Spring boot admin config
+spring.boot.admin:
+  context-path: /admin
+  client:
+    url: http://localhost:8080/admin
+    username: ${spring.security.user.name}
+    password: ${spring.security.user.password}
+    instance:
+      prefer-ip: true
+      metadata.user:
+        name: ${spring.security.user.name}
+        password: ${spring.security.user.password}

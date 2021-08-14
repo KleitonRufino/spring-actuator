@@ -1,0 +1,29 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: demo-admin-server
+    
+# Actuator config
+management:
+  endpoint:
+    shutdown.enabled: true
+    health.show-details: always
+  endpoints.web.exposure.include: '*'
+
+# Security config
+spring.security.user:
+  name: admin
+  password: admin
+  
+# Spring boot admin config
+spring.boot.admin:
+  client:
+    username: ${spring.security.user.name}
+    password: ${spring.security.user.password}
+    instance:
+      prefer-ip: true
+      metadata.user:
+        name: ${spring.security.user.name}
+        password: ${spring.security.user.password}

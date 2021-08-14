@@ -1,0 +1,28 @@
+server:
+  port: 8100
+
+spring:
+  application:
+    name: demo-admin-client
+# Actuator config
+management:
+  endpoint:
+    shutdown.enabled: true
+    health.show-details: always
+  endpoints.web.exposure.include: '*'
+
+  
+# Spring boot admin config
+spring.boot.admin:
+  client:
+    url: http://localhost:8000
+    username: admin
+    password: admin
+    instance:
+      prefer-ip: true
+      
+logging:
+  file:
+    name: demo-admin-client.log
+    max-history: 20
+    max-size: 20MB
